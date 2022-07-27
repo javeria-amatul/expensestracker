@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="data"
+            type= "com.phoenix.expensetracker.feature_trans.domain.model.TransactionUIObject" />
+        <import type="com.phoenix.expensetracker.feature_trans.util.TransactionType"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_date_or_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="16dp"
+            android:text="@{data.desc}"
+            android:textAlignment="textStart"
+            style="@style/Phoenix.TextAppearance.Regular"
+            app:layout_constraintEnd_toStartOf="@+id/tv_amount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Groceries" />
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:padding="16dp"
+            android:textAlignment="textEnd"
+            style="@style/Phoenix.TextAppearance.Regular"
+            android:text="@{data.type == TransactionType.DEBIT ? @string/text_amount_negative(data.amount) : @string/text_amount(data.amount)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_date_or_desc"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="-$900" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

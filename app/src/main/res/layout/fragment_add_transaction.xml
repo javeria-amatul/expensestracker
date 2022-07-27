@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type= "com.phoenix.expensetracker.feature_trans.presentation.viewmodel.AddTransactionViewmodel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp">
+
+        <TextView
+            android:id="@+id/tv_heading"
+            style="@style/Phoenix.TextAppearance.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_horizontal"
+            android:text="@string/add_transaction"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_transaction"
+            style="@style/Phoenix.TextInputLayout.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:enabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_heading">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/et_transaction"
+                style="@style/Phoenix.TextAppearance.TextBody1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/transaction_type"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="textCapWords"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:text="@={viewModel._type}"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/color_545454" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_trans_desc"
+            style="@style/Phoenix.TextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/transaction_desc"
+            app:layout_constraintEnd_toEndOf="@+id/til_transaction"
+            app:layout_constraintStart_toStartOf="@+id/til_transaction"
+            app:layout_constraintTop_toBottomOf="@+id/til_transaction">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_trans_desc"
+                android:text="@={viewModel._desc}"
+                android:imeOptions="actionNext"
+                android:maxLines="2"
+                android:minLines="1"
+                style="@style/Phoenix.TextAppearance.TextBody1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_add_sub_amt"
+            style="@style/Phoenix.TextInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/dollar"
+            app:endIconDrawable="@drawable/ic_add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_trans_desc">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_add_sub_amt"
+                android:text="@={viewModel._amount}"
+                style="@style/Phoenix.TextAppearance.TextBody1"
+                android:inputType="number"
+                android:imeOptions="actionDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            style="@style/Phoenix.TextAppearance.TextBody1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp"
+            android:text="@string/add"
+            android:textColor="@color/white"
+            android:onClick="@{(v)-> viewModel.addTransaction()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_add_sub_amt" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

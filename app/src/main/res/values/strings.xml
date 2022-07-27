@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="expenses">Expenses</string>
+    <string name="income">Income</string>
+    <string name="balance">Balance</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="transaction_type">Transaction type</string>
+    <string name="transaction_desc">Transaction Description</string>
+    <string name="dollar">$</string>
+    <string name="add">add</string>
+    <string name="error_message">Something went wrong. Please try again.</string>
+    <string name="transaction_added">Transaction Added</string>
+    <string name="fields_required">All fields required</string>
+    <string name="text_amount" formatted="false" translatable="false">$ %,.2f</string>
+    <string name="text_amount_negative" formatted="false" translatable="false">-$ %,.2f</string>
+    <string name="delete_transaction">Delete Transaction</string>
+    <string name="delete_transaction_warning">Do you want to delete \" %s \" transaction</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>
